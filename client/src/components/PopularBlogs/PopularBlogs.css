@@ -1,0 +1,38 @@
+.popular-section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.popular-img {
+  width: 200px;
+  aspect-ratio: 1;
+  border-radius: 20px;
+}
+
+.popular-header {
+  margin-bottom: 1rem;
+  font-size: 20px;
+}
+
+.popular-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 20%;
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #efefef;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 0, 0); /* color of the scroll thumb */
+  border-radius: 10px; /* roundness of the scroll thumb */
+}

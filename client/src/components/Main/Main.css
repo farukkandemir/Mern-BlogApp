@@ -1,0 +1,24 @@
+.main-section {
+  display: grid;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  grid-template-columns: 2fr 3fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.main-img {
+  max-width: 100%;
+}
+
+.main-header {
+  font-size: 4rem;
+  font-weight: lighter;
+  color: #212529;
+  margin-bottom: 10px;
+}
+
+.main-p {
+  font-size: 1.2rem;
+}

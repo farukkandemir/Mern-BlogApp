@@ -1,0 +1,19 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  height: 4rem;
+  background: #2b3144;
+  color: #efefef;
+}
+
+.btn-header {
+  padding: 7px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  color: white;
+}
