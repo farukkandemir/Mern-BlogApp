@@ -8,3 +8,34 @@
 body {
   font-family: "Open Sans", sans-serif;
 }
+
+a,
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.App {
+  height: 100vh;
+}
+
+.form {
+  width: 60%;
+  max-width: 1200px;
+  margin: 10rem auto;
+}
+
+.posts-container {
+  padding: 2rem 0;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 2fr 1fr;
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .posts-container {
+    grid-template-columns: 1fr;
+  }
+}

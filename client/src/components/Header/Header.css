@@ -17,3 +17,17 @@
   outline: none;
   color: white;
 }
+
+@media only screen and (max-width: 480px) {
+  .header-container > h1 {
+    font-size: 1.5rem;
+  }
+
+  .btn-header {
+    font-size: 0.7rem;
+  }
+
+  .header-btns {
+    display: flex;
+  }
+}
