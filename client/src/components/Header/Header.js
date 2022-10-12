@@ -28,7 +28,9 @@ function Header() {
         </div>
       ) : (
         <div className="header-btns">
-          <button className="btn-header">MyPosts</button>
+          <Link to="/dashboard">
+            <button className="btn-header">MyPosts</button>
+          </Link>
           <Link to="/newpost">
             <button className="btn-header">Create Post</button>
           </Link>
