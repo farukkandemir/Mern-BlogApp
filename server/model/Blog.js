@@ -10,7 +10,7 @@ const blogSchema = mongoose.Schema(
 
     blogImage: {
       type: String,
-      required: true,
+      required: false,
     },
 
     blogBody: {
@@ -19,8 +19,9 @@ const blogSchema = mongoose.Schema(
     },
 
     author: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: "User",
+      required: true,
     },
   },
   {timestamps: true}

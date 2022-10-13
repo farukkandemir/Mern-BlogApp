@@ -6,7 +6,7 @@ import PostsPage from "./pages/PostsPage";
 import NewPost from "./pages/NewPost";
 
 function App() {
-  const user = true;
+  const user = false;
 
   return (
     <div className="App">

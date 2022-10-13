@@ -6,7 +6,11 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+/////////-------RouteImports------////////////
+
 const userRoutes = require("./routes/userRoutes");
+const blogRoutes = require("./routes/blogRoutes");
+const loginRoute = require("./routes/loginRoute");
 
 ///////////-------MiddleWares-------////////////
 
@@ -20,7 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 //////////------Routes----------//////////
-
+app.use("/api/login", loginRoute);
+app.use("/api/users/blogs", blogRoutes);
 app.use("/api/users", userRoutes);
 
 mongoose

@@ -23,7 +23,7 @@ function NewPost() {
             <label htmlFor="blog-images" className="d-block">
               Select image for Post
             </label>
-            <input type="file" id="blog-images" className="mb-4" />
+            <input type="file" id="blog-images" className="mb-4" name="blogImage" />
           </div>
           <div className="form-group">
             <label htmlFor="Textarea">Post Body</label>

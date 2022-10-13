@@ -21,9 +21,11 @@ const userSchema = mongoose.Schema(
     },
 
     blogs: {
-      type: [mongoose.Schema.Types.ObjectId],
+      type: [mongoose.Types.ObjectId],
       ref: "Blog",
     },
+
+    retreshToken: String,
   },
   {timestamps: true}
 );

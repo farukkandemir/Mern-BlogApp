@@ -11,6 +11,7 @@ const createUser = async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      blogs: [],
     });
 
     res.status(201).json({message: "User is successfully created", newUser});

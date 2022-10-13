@@ -3,7 +3,7 @@ import "./Header.css";
 import {Link} from "react-router-dom";
 
 function Header() {
-  const user = true;
+  const user = false;
 
   return (
     <header className="header-container">
