@@ -1,9 +1,10 @@
 import React from "react";
 import "./Header.css";
 import {Link} from "react-router-dom";
+import {useContextAPI} from "../../context/Context";
 
 function Header() {
-  const user = false;
+  const {user, dispatch} = useContextAPI();
 
   return (
     <header className="header-container">
@@ -11,7 +12,7 @@ function Header() {
         <h1>Blogify</h1>
       </Link>
 
-      {!user ? (
+      {!user?.accessToken ? (
         <div>
           <Link to="/">
             <button
@@ -35,7 +36,9 @@ function Header() {
             <button className="btn-header">Create Post</button>
           </Link>
           <button className="btn-header">Profile</button>
-          <button className="btn-header">LogOut</button>
+          <button className="btn-header" onClick={() => dispatch({type: "LOG_OUT"})}>
+            LogOut
+          </button>
         </div>
       )}
     </header>

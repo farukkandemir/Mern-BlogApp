@@ -14,9 +14,11 @@ const createUser = async (req, res) => {
       blogs: [],
     });
 
-    res.status(201).json({message: "User is successfully created", newUser});
-  } catch (error) {
-    res.status(409).json(error);
+    res.status(201).json({message: "User is successfully created"});
+  } catch (errors) {
+    res
+      .status(409)
+      .json({errors: {isTaken: "There is already a user with this credentials"}});
   }
 };
 

@@ -4,9 +4,10 @@ import Register from "./pages/Register";
 import {Routes, Route} from "react-router-dom";
 import PostsPage from "./pages/PostsPage";
 import NewPost from "./pages/NewPost";
+import {useContextAPI} from "./context/Context";
 
 function App() {
-  const user = false;
+  const {user} = useContextAPI();
 
   return (
     <div className="App">
@@ -15,12 +16,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {user && (
+        {user?.accessToken && (
           <>
             <Route path="/dashboard" element={<PostsPage />} />
             <Route path="/newpost" element={<NewPost />} />
           </>
         )}
+
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

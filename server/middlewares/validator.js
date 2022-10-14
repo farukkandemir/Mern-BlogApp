@@ -46,11 +46,13 @@ const validate = (req, res, next) => {
     return next();
   }
 
-  const extracredErrors = [];
-  errors.array().map((err) => extracredErrors.push({[err.param]: err.msg}));
+  let extracktedErrors = {};
+  errors
+    .array()
+    .map((err) => (extracktedErrors = {...extracktedErrors, [err.param]: err.msg}));
 
   return res.status(422).json({
-    errors: extracredErrors,
+    errors: extracktedErrors,
   });
 };
 
