@@ -34,6 +34,24 @@ a:hover {
   margin: 0 auto;
 }
 
+.single-post-page {
+  width: 60%;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.single-post-page > img {
+  width: 75%;
+  height: 300px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 2rem;
+}
+
+.single-post-page > p {
+  text-indent: 2rem;
+}
+
 @media only screen and (max-width: 768px) {
   .posts-container {
     grid-template-columns: 1fr;

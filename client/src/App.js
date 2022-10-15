@@ -5,6 +5,8 @@ import {Routes, Route} from "react-router-dom";
 import PostsPage from "./pages/PostsPage";
 import NewPost from "./pages/NewPost";
 import {useContextAPI} from "./context/Context";
+import SinglePostPage from "./pages/SinglePostPage";
+import EditSinglePost from "./pages/EditSinglePost";
 
 function App() {
   const {user} = useContextAPI();
@@ -20,6 +22,8 @@ function App() {
           <>
             <Route path="/dashboard" element={<PostsPage />} />
             <Route path="/newpost" element={<NewPost />} />
+            <Route path="/blog/:id" element={<SinglePostPage />} />
+            <Route path="/edit/:id" element={<EditSinglePost />} />
           </>
         )}
 

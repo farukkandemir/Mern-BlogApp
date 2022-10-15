@@ -3,8 +3,10 @@ const Blog = require("../model/Blog");
 const User = require("../model/User");
 
 const getAllBlogs = async (req, res) => {
+  const {authorId} = req.query;
+
   try {
-    const allBlogs = await Blog.find();
+    const allBlogs = await Blog.find({author: authorId});
 
     if (allBlogs == null || allBlogs.length === 0)
       return res.status(200).json({message: "There are no blogs to display"});
@@ -19,8 +21,8 @@ const createBlog = async (req, res) => {
   const {title, blogBody, authorId} = req.body;
   const blogImage = req.file.originalname;
 
-  if (!title || !blogBody || !blogImage)
-    return res.status(400).json({message: "Title or BlogBody or BlogImage is required"});
+  if (!title || !blogBody)
+    return res.status(400).json({message: "Title or BlogBody is required"});
 
   const user = await User.findById(authorId);
 

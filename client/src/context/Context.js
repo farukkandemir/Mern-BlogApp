@@ -2,7 +2,6 @@ import {createContext, useContext, useReducer, useEffect} from "react";
 
 const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem("user")) || null,
-  blogs: JSON.parse(localStorage.getItem("blogs")) || [],
   isFetching: false,
   messages: null,
 };
@@ -34,7 +33,7 @@ function reducer(state, {type, payload}) {
       return {
         ...state,
         user: payload.user,
-        blogs: payload.blogs,
+        accessToken: payload.accessToken,
         isFetching: false,
       };
     case "LOG_OUT":
@@ -57,17 +56,13 @@ export function ContextProvider({children}) {
     localStorage.setItem("user", JSON.stringify(state.user));
   }, [state.user]);
 
-  useEffect(() => {
-    localStorage.setItem("blogs", JSON.stringify(state.blogs));
-  }, [state.blogs]);
-
   return (
     <Context.Provider
       value={{
         user: state.user,
-        blogs: state.blogs,
         isLogin: state.isLogin,
         messages: state.messages,
+
         dispatch,
       }}
     >

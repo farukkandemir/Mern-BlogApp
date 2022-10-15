@@ -1,54 +1,66 @@
 import React from "react";
 import "./Post.css";
+import axios from "axios";
+import {Link} from "react-router-dom";
+import moment from "moment";
 
-function Post({post}) {
+function Post({post, id}) {
+  const imageFolder = "http://localhost:4000/images/";
+
+  async function handleDelete(id) {
+    const result = await axios
+      .delete(`/api/users/blogs/${id}`)
+      .catch((err) => console.log(err));
+
+    result.data && window.location.reload();
+  }
+
   return (
-    // <div className="card mb-3 p-2">
-    //   <div className="row no-gutters">
-    //     <div className="col-md-4" style={{maxHeight: "200px"}}>
-    //       <img
-    //         src={post.src}
-    //         className="card-img"
-    //         alt="post-img"
-    //         style={{height: "100%", maxWidth: "275px"}}
-    //       />
-    //     </div>
-    //     <div className="col-md-8">
-    //       <div className="card-body">
-    //         <h5 className="card-title">Card title</h5>
-    //         <p className="card-text">
-    //           // This is a wider card with supporting text below as a natural lead-in to
-    //           // additional content. This content is a little bit longer. This is a wider
-    //           // card with supporting text below as a natural lead-in to additional
-    //           content. // This content is a little bit longer.
-    //         </p>
-    //         <p className="card-text">
-    //           <small className="text-muted">Last updated 3 mins ago</small>
-    //         </p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-
     <div className="single-post">
-      <img src={post.src} alt="post-img" className="post-img" />
+      <img src={imageFolder + post.blogImage} alt="post-img" className="post-img" />
       <div className="post-info">
-        <h6>{post.title}</h6>
-        <p>
-          This is a wider card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer
+        <h6 style={{fontWeight: "bold"}}>{post.title}</h6>
+        <p style={{lineHeight: "1.3rem", fontSize: "0.9rem", marginBottom: "0"}}>
+          {post.blogBody.length > 300
+            ? ` ${post.blogBody.slice(0, 300)}....`
+            : post.blogBody}
         </p>
-        <p style={{position: "absolute", bottom: "0"}}>
-          <small>Last Updated 3 days ago</small>
-        </p>
+        <div className="d-flex justify-content-between">
+          <p style={{marginBottom: "0"}}>
+            <small>{moment(post?.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}</small>
+          </p>
+          <div>
+            <Link to={`/edit/${id}`}>
+              <button
+                className="btn-sm btn btn-success mr-2"
+                style={{fontSize: "0.7rem"}}
+                id={id}
+              >
+                Edit
+              </button>
+            </Link>
+            <button
+              className="btn-sm btn btn-danger mr-2"
+              style={{fontSize: "0.7rem"}}
+              id={id}
+              onClick={(e) => handleDelete(e.target.id)}
+            >
+              Delete
+            </button>
+            <Link to={`/blog/${id}`}>
+              <button
+                className="btn-sm btn btn-secondary"
+                style={{fontSize: "0.7rem"}}
+                id={id}
+              >
+                Read More
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Post;
-
-// This is a wider card with supporting text below as a natural lead-in to
-// additional content. This content is a little bit longer. This is a wider
-// card with supporting text below as a natural lead-in to additional content.
-// This content is a little bit longer.

@@ -29,9 +29,13 @@ function LoginForm() {
         }
       });
 
+    console.log(loginResult);
+
     dispatch({
       type: "LOGIN_SUCCESS",
-      payload: {user: loginResult.data.user, blogs: loginResult.data.blogs},
+      payload: {
+        user: loginResult.data.user,
+      },
     });
 
     window.location.replace("/dashboard");

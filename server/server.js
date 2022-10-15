@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 5000;
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const loginRoute = require("./routes/loginRoute");
+const path = require("path");
 
 ///////////-------MiddleWares-------////////////
 
@@ -22,6 +23,7 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 //////////------Routes----------//////////
 app.use("/api/login", loginRoute);
