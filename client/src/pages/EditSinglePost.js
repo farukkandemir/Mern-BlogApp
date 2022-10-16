@@ -12,9 +12,7 @@ function EditSinglePost() {
   const bodyRef = useRef();
 
   async function getSinglePost() {
-    const post = await axios
-      .get(`/api/users/blogs/${id}`)
-      .catch((err) => console.log(err));
+    const post = await axios.get(`/api/blogs/${id}`).catch((err) => console.log(err));
 
     setSinglePost(post.data);
   }

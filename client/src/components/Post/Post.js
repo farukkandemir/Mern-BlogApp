@@ -3,13 +3,20 @@ import "./Post.css";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import moment from "moment";
+import {useContextAPI} from "../../context/Context";
 
 function Post({post, id}) {
   const imageFolder = "http://localhost:4000/images/";
 
+  const {user} = useContextAPI();
+
   async function handleDelete(id) {
     const result = await axios
-      .delete(`/api/users/blogs/${id}`)
+      .delete(`/api/blogs/${id}`, {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      })
       .catch((err) => console.log(err));
 
     result.data && window.location.reload();

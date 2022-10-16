@@ -5,7 +5,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 function NewPost() {
-  const {user, dispatch, blogs} = useContextAPI();
+  const {user} = useContextAPI();
 
   const navigate = useNavigate();
 
@@ -27,7 +27,11 @@ function NewPost() {
     formdata.append("authorId", data.authorId);
 
     const result = await axios
-      .post("/api/users/blogs", formdata)
+      .post("/api/blogs", formdata, {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      })
       .catch((err) => console.log(err));
 
     navigate("/dashboard");

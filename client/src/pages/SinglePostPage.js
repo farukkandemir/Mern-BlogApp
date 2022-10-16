@@ -4,9 +4,12 @@ import axios from "axios";
 import moment from "moment";
 import {useParams} from "react-router-dom";
 import Footer from "../components/Footer/Footer";
+import {useContextAPI} from "../context/Context";
 
 function SinglePostPage() {
   const {id} = useParams();
+
+  const {user} = useContextAPI();
 
   const [singlePost, setSinglePost] = useState();
 
@@ -14,7 +17,11 @@ function SinglePostPage() {
 
   async function getSinglePost() {
     const post = await axios
-      .get(`/api/users/blogs/${id}`)
+      .get(`/api/blogs/${id}`, {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      })
       .catch((err) => console.log(err));
 
     setSinglePost(post.data);

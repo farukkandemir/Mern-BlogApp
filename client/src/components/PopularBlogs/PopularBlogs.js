@@ -29,7 +29,7 @@ function PopularBlogs() {
         {popular.map((blog, index) => (
           <div key={index}>
             <img src={blog.src} alt="" className="popular-img" />
-            <p>{blog.title}</p>
+            <p className="text-center">{blog.title}</p>
           </div>
         ))}
       </div>

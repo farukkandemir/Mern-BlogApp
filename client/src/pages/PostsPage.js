@@ -11,7 +11,11 @@ function PostsPage() {
 
   async function getBlogs() {
     const blogs = await axios
-      .get(`/api/users/blogs?authorId=${user.id}`)
+      .get(`/api/blogs?authorId=${user.id}`, {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      })
       .catch((error) => console.log(error));
 
     setBlogs(blogs.data);
