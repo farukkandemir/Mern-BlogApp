@@ -35,7 +35,10 @@ function Header() {
           <Link to="/newpost">
             <button className="btn-header">Create Post</button>
           </Link>
-          <button className="btn-header">Profile</button>
+          <Link to="/profile">
+            <button className="btn-header">Profile</button>
+          </Link>
+
           <button className="btn-header" onClick={() => dispatch({type: "LOG_OUT"})}>
             LogOut
           </button>

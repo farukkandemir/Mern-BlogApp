@@ -7,6 +7,7 @@ import NewPost from "./pages/NewPost";
 import {useContextAPI} from "./context/Context";
 import SinglePostPage from "./pages/SinglePostPage";
 import EditSinglePost from "./pages/EditSinglePost";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const {user} = useContextAPI();
@@ -24,6 +25,7 @@ function App() {
             <Route path="/newpost" element={<NewPost />} />
             <Route path="/blog/:id" element={<SinglePostPage />} />
             <Route path="/edit/:id" element={<EditSinglePost />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </>
         )}
 
